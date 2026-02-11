@@ -1,11 +1,10 @@
 # 🧮 Matrix Analysis & Linear Algebra | Master Edition
 
-> **"Where Data Science meets Cyberpunk Design."**
-> A visually stunning, single-file dashboard that performs rigorous statistical analysis and linear algebra transformations on regional sales data.
+> **"A computational breakdown of sales data using Matrix transformations."**
+> A professional, interactive dashboard that performs rigorous statistical analysis and linear algebra operations with a stunning Cyberpunk/Deep-Science aesthetic.
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Mathematics](https://img.shields.io/badge/Mathematics-Linear%20Algebra-blueviolet?style=for-the-badge)
 ![Author](https://img.shields.io/badge/Author-DAHANE%20AHMED%20LAMINE-cyan?style=for-the-badge)
 
@@ -14,29 +13,30 @@
 *(Note: Replace `YOUR-USERNAME` and `YOUR-REPO-NAME` in the link above after deployment)*
 
 ## 📖 Project Overview
-This project is not just a static page; it is a **computational breakdown** of how Data Science works under the hood. It takes a raw dataset (Sales Matrix $D$) and walks the user through the mathematical operations required to derive insights.
+This project is a technical solution to a data science problem involving Regional Sales Data. Instead of a simple report, it is a fully interactive **computational engine** that visualizes the mathematics behind the data.
 
-It features a custom **"Deep Space / Cyberpunk"** theme with neon accents, glassmorphism, and interactive hover effects.
+It features a custom **"Deep Space"** theme with glassmorphism, neon accents, and interactive sidebars.
 
-### 🧠 Core Mathematical Concepts
+### 🧠 Mathematical Concepts Covered
 1.  **Descriptive Statistics:**
-    * Step-by-step calculation of **Mean** ($\mu$), **Variance** ($\sigma^2$), and **Standard Deviation** ($\sigma$).
-    * Dimensionality analysis ($4 \times 3$ matrices).
+    * **Mean ($\mu$), Median, Range.**
+    * **Variance ($\sigma^2$) & Standard Deviation ($\sigma$):** Calculated step-by-step.
+    * **Coefficient of Variation (CV):** Analyzing sales volatility.
 2.  **Linear Algebra:**
-    * **Matrix Transposition** ($D^T$): Flipping dimensions for regional analysis.
-    * **Dot Product** ($D \cdot P$): Multiplying matrices by vectors to calculate Total Revenue.
+    * **Matrix Transposition ($D^T$):** Switching row/column perspectives.
+    * **Matrix Multiplication ($D \cdot P$):** Calculating Total Revenue using Dot Products.
 3.  **Python Implementation:**
-    * A dedicated section showing how to reproduce these results using the **NumPy** library.
+    * Includes a dedicated section showing how to reproduce these results using the **NumPy** library.
 
 ## ✨ Features
-* **Monolithic Architecture:** Over **800 lines of code** in a single `index.html` file for maximum portability.
-* **Visual Matrix Engine:** Custom CSS grid layouts that visually represent matrices with bracket styling.
-* **Step-by-Step Math:** Blocks that break down complex formulas into simple arithmetic steps.
-* **Code Highlighting:** Beautiful "Mac-Terminal" style code blocks for Python scripts.
-* **Responsive Design:** Fully fluid layout that adapts to mobile screens.
+* **Monolithic Architecture:** A single `index.html` file containing HTML, CSS, and JS for maximum portability.
+* **Visual Matrix Engine:** Custom CSS grids that visually represent matrices with bracket styling.
+* **Interactive Sidebar:** A fully functional navigation bar with ScrollSpy (auto-highlighting).
+* **Code Highlighting:** Beautiful "Mac-Terminal" style code blocks.
+* **Responsive Design:** Adapts fluidly from desktop monitors to mobile screens.
 
 ## 🛠️ Installation & Usage
-This project relies on **Vanilla HTML/CSS**, meaning no heavy frameworks (React, Angular) are needed.
+This project uses **Vanilla HTML/CSS**, requiring no build tools or frameworks.
 
 1.  **Clone the Repository:**
     ```bash
@@ -46,7 +46,7 @@ This project relies on **Vanilla HTML/CSS**, meaning no heavy frameworks (React,
     Simply double-click `index.html` to open it in Chrome, Edge, Firefox, or Safari.
 
 ## 🎨 Customization
-The site is built with **CSS Variables** for instant theming. To change the color palette (e.g., to a "Light Mode" or "Forest Theme"), simply edit the `:root` section in the `<style>` tag:
+The site uses **CSS Variables** for instant theming. To change the color palette, edit the `:root` section in the `<style>` tag:
 
 ```css
 :root {
