@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Analysis & Linear Algebra | Dahane Ahmed Lamine</title>
+    <title>Matrix Analysis Project | Master Edition</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,627 +13,610 @@
 
     <style>
         /* ========================================
-           1. THEME VARIABLES (Cyberpunk/Deep Space)
-           ======================================== */
+        1. THEME VARIABLES (CYBERPUNK / DATA SCIENCE)
+        ========================================
+        */
         :root {
             /* Backgrounds */
-            --bg-body: #05060a;       /* Deepest Black/Blue */
-            --bg-card: #0f131f;       /* Card Surface */
-            --bg-card-hover: #151a29; /* Card Hover State */
-            --bg-code: #000000;       /* Code Block Background */
+            --bg-body: #05060a;        /* Pitch Black */
+            --bg-sidebar: #0b0f19;     /* Sidebar Surface */
+            --bg-card: #111625;        /* Card Surface */
+            --bg-card-hover: #161b2e;  /* Hover State */
+            --bg-code: #000000;        /* Terminal Background */
             
             /* Accents */
-            --primary-blue: #A8C7FA;  /* Google Blue */
-            --primary-dark: #2c446b;
-            --accent-cyan: #64ffda;   /* Neon Cyan */
-            --accent-violet: #d2a8ff; /* Soft Violet */
-            --accent-pink: #ff79c6;   /* Hot Pink */
-            --accent-green: #50fa7b;  /* Matrix Green */
-            --accent-orange: #ffb86c; /* Warning Orange */
+            --primary-blue: #A8C7FA;   /* Headers */
+            --accent-cyan: #64ffda;    /* Highlights */
+            --accent-violet: #d2a8ff;  /* Secondary Highlights */
+            --accent-pink: #ff79c6;    /* Math Symbols */
+            --accent-green: #50fa7b;   /* Success/Money */
+            --accent-orange: #ffb86c;  /* Warnings/Attention */
             
             /* Text */
             --text-main: #e6edf3;
             --text-secondary: #8b949e;
-            --text-muted: #484f58;
+            --text-dim: #484f58;
             
-            /* Shapes */
+            /* Dimensions */
+            --sidebar-width: 320px;
             --radius-lg: 20px;
             --radius-md: 12px;
-            --radius-sm: 6px;
         }
 
         /* ========================================
-           2. GLOBAL RESET & BASE STYLES
-           ======================================== */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        2. RESET & SCROLLING
+        ========================================
+        */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html { scroll-behavior: smooth; }
+        
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.7;
-            padding-bottom: 5rem;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* Typography */
-        h1, h2, h3, h4, h5 {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-blue); }
 
+        /* ========================================
+        3. TYPOGRAPHY
+        ========================================
+        */
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; color: var(--text-main); margin-bottom: 1rem; }
+        
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--primary-blue));
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--primary-blue));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-align: center;
         }
 
         h2 {
             font-size: 2rem;
-            font-weight: 600;
             color: var(--primary-blue);
             margin-top: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(168, 199, 250, 0.1);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         h3 {
             font-size: 1.4rem;
-            font-weight: 500;
             color: var(--accent-violet);
             margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-violet);
-            padding-left: 15px;
+            font-weight: 600;
         }
 
         p {
-            margin-bottom: 1.5rem;
             color: var(--text-secondary);
-            font-size: 1.05rem;
-            max-width: 80ch;
-        }
-
-        /* ========================================
-           3. LAYOUT & CONTAINERS
-           ======================================== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header-section {
-            text-align: center;
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        .creator-badge {
-            display: inline-block;
-            background: rgba(100, 255, 218, 0.1);
-            color: var(--accent-cyan);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            max-width: 75ch;
+            font-size: 1.05rem;
+        }
+
+        ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
+        li { margin-bottom: 0.5rem; }
+
+        /* ========================================
+        4. LAYOUT STRUCTURE
+        ========================================
+        */
+        .app-container { display: flex; min-height: 100vh; }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+        .brand span { color: var(--accent-cyan); }
+
+        .nav-menu { list-style: none; padding: 0; flex-grow: 1; }
+        
+        .nav-label {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.15);
+            color: var(--text-dim);
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            padding-left: 10px;
         }
 
-        /* ========================================
-           4. CARD COMPONENT
-           ======================================== */
-        .card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border-color: rgba(168, 199, 250, 0.1);
-        }
-
-        /* ========================================
-           5. MATH & MATRIX STYLING
-           ======================================== */
-        .matrix-wrapper {
+        .nav-link {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .matrix-box {
-            position: relative;
-            padding: 10px 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.3rem;
-            display: inline-block;
-        }
-
-        /* The Brackets [] */
-        .matrix-box::before {
-            content: "";
-            position: absolute;
-            top: 0; bottom: 0; left: 0;
-            width: 10px;
-            border: 2px solid var(--text-secondary);
-            border-right: none;
-            border-radius: 8px 0 0 8px;
-        }
-        
-        .matrix-box::after {
-            content: "";
-            position: absolute;
-            top: 0; bottom: 0; right: 0;
-            width: 10px;
-            border: 2px solid var(--text-secondary);
-            border-left: none;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .row {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin: 0.5rem 0;
-        }
-
-        .val {
-            width: 40px;
-            text-align: center;
-            color: var(--accent-cyan);
-            font-weight: 700;
-        }
-
-        .label {
-            text-align: center;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 12px 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.2s ease;
             margin-bottom: 5px;
         }
 
-        .operator {
-            font-size: 2rem;
-            color: var(--text-muted);
-            font-weight: 300;
+        .nav-link i { margin-right: 12px; width: 20px; text-align: center; }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-main);
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(90deg, rgba(168, 199, 250, 0.15), transparent);
+            color: var(--primary-blue);
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .creator-info {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 4rem 5rem;
+            max-width: 1600px;
         }
 
         /* ========================================
-           6. TABLES & CALCULATION STEPS
-           ======================================== */
-        .calc-table {
+        5. UI COMPONENTS
+        ========================================
+        */
+        
+        /* CARD */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* MATRIX VISUALIZATION */
+        .matrix-display {
+            display: inline-flex;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .bracket {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--text-dim);
+            line-height: 1;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 30px;
+            margin: 0 15px;
+            text-align: center;
+        }
+
+        .matrix-val { color: var(--accent-cyan); font-weight: bold; }
+        .matrix-val:hover { color: var(--accent-pink); cursor: crosshair; }
+
+        /* MATH FORMULAS */
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: var(--accent-pink);
+            font-size: 1.1rem;
+            padding: 0 4px;
+        }
+
+        /* DATA TABLES */
+        .data-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
+            margin: 20px 0;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
-        .calc-table th {
+        .data-table th {
             text-align: left;
             padding: 12px;
-            color: var(--text-secondary);
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.02);
+            border-bottom: 2px solid var(--text-dim);
+            color: var(--primary-blue);
+            text-transform: uppercase;
         }
 
-        .calc-table td {
+        .data-table td {
             padding: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             color: var(--text-main);
         }
 
-        .calc-table tr:hover {
-            background-color: rgba(255,255,255,0.03);
-        }
+        .data-table tr:hover { background: rgba(255,255,255,0.02); }
 
-        /* Step-by-step math explanations */
-        .step-block {
-            background: rgba(0,0,0,0.3);
-            border-left: 3px solid var(--accent-green);
+        /* INSIGHT BOX */
+        .insight-box {
+            background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+            border-left: 4px solid var(--accent-green);
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
-
-        .step-title {
-            color: var(--accent-green);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: block;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        .formula {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--accent-pink);
-            margin: 0 5px;
-        }
-
-        /* ========================================
-           7. CODE BLOCKS (PYTHON)
-           ======================================== */
-        .code-container {
             margin: 2rem 0;
-            background: #0e0e0e;
-            border-radius: var(--radius-md);
-            border: 1px solid #333;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 0 12px 12px 0;
         }
+        .insight-title { color: var(--accent-green); font-weight: bold; margin-bottom: 0.5rem; display: block; }
 
-        .code-header {
-            background: #1a1a1a;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-
-        .dots {
-            display: flex;
-            gap: 6px;
-            margin-right: 15px;
-        }
-        
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .red { background: #ff5f56; }
-        .yellow { background: #ffbd2e; }
-        .green { background: #27c93f; }
-
-        .filename {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        pre {
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 0;
-            font-family: 'JetBrains Mono', monospace;
+        /* CREATOR BADGE */
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 50px;
             font-size: 0.9rem;
-            color: #d4d4d4;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
-
-        /* Syntax Highlighting */
-        .kw { color: var(--accent-pink); }   /* Keyword */
-        .fn { color: var(--accent-green); }  /* Function */
-        .str { color: var(--accent-cyan); }  /* String */
-        .num { color: var(--accent-orange); } /* Number */
-        .com { color: #6272a4; font-style: italic; } /* Comment */
 
         /* ========================================
-           8. FOOTER
-           ======================================== */
-        footer {
-            margin-top: 5rem;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 3rem;
-            color: var(--text-muted);
+        6. RESPONSIVE
+        ========================================
+        */
+        @media (max-width: 992px) {
+            .app-container { flex-direction: column; }
+            .sidebar { 
+                width: 100%; height: auto; position: relative; 
+                border-right: none; border-bottom: 1px solid #333;
+                padding: 1rem;
+            }
+            .nav-menu { display: flex; overflow-x: auto; gap: 10px; margin-top: 10px; }
+            .nav-label { display: none; }
+            .nav-link { white-space: nowrap; background: rgba(255,255,255,0.05); }
+            .main-content { margin-left: 0; padding: 2rem; }
+            .matrix-display { width: 100%; overflow-x: auto; }
         }
-
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="app-container">
         
-        <header class="header-section">
-            <div class="creator-badge">Created by Dahane Ahmed Lamine</div>
-            <h1>Matrix Analysis Project</h1>
-            <p style="margin: 1.5rem auto; font-size: 1.2rem;">
-                A deep dive into Descriptive Statistics, Variability Analysis, and Linear Algebra Transformations applied to Regional Sales Data.
-            </p>
-        </header>
+        <nav class="sidebar">
+            <div class="brand">
+                MATRIX<span>.ANALYSIS</span>
+            </div>
 
-        <section class="card">
-            <h2><i class="fas fa-database"></i> Part 1: Understanding the Data</h2>
-            <p>
-                We begin with a dataset represented as Matrix $D$. Each row corresponds to a specific geographical region (1-4), and each column represents a Product Category (A, B, C).
-            </p>
+            <div class="nav-menu">
+                <div class="nav-label">Start</div>
+                <a href="#intro" class="nav-link active"><i class="fas fa-home"></i> Introduction</a>
+                
+                <div class="nav-label">Part 1: Data</div>
+                <a href="#understanding" class="nav-link"><i class="fas fa-database"></i> Understanding Data</a>
+                <a href="#statistics" class="nav-link"><i class="fas fa-chart-bar"></i> Descriptive Stats</a>
+                <a href="#variability" class="nav-link"><i class="fas fa-wave-square"></i> Variability</a>
 
-            <div class="matrix-wrapper">
-                <div>
-                    <div class="label">Matrix D (Sales Data)</div>
-                    <div class="matrix-box">
-                        <div class="row"><span class="val">4</span><span class="val">8</span><span class="val">12</span></div>
-                        <div class="row"><span class="val">6</span><span class="val">10</span><span class="val">15</span></div>
-                        <div class="row"><span class="val">5</span><span class="val">7</span><span class="val">9</span></div>
-                        <div class="row"><span class="val">3</span><span class="val">6</span><span class="val">9</span></div>
-                    </div>
+                <div class="nav-label">Part 2: Linear Algebra</div>
+                <a href="#transpose" class="nav-link"><i class="fas fa-exchange-alt"></i> Matrix Transpose</a>
+                <a href="#transformation" class="nav-link"><i class="fas fa-calculator"></i> Transformation</a>
+                <a href="#patterns" class="nav-link"><i class="fas fa-search-dollar"></i> Patterns & Revenue</a>
+
+                <div class="nav-label">Part 3: Concepts</div>
+                <a href="#concepts" class="nav-link"><i class="fas fa-lightbulb"></i> Conceptual Qs</a>
+            </div>
+
+            <div class="creator-info">
+                Created by<br>
+                <strong style="color: var(--accent-cyan); letter-spacing: 1px;">DAHANE AHMED LAMINE</strong>
+            </div>
+        </nav>
+
+        <main class="main-content">
+
+            <section id="intro" class="card" style="text-align: center; padding: 4rem;">
+                <div class="hero-badge">Data Science Project 2026</div>
+                <h1>Matrix Analysis & Linear Algebra</h1>
+                <p style="margin: 1.5rem auto;">
+                    A comprehensive solution applying statistical concepts, matrix operations, and transformation logic to a regional sales dataset.
+                </p>
+                <div style="margin-top: 2rem;">
+                    <a href="#understanding" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">Start Analysis <i class="fas fa-arrow-down"></i></a>
                 </div>
-            </div>
+            </section>
 
-            <h3>1.1 Data Types & Dimensionality</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 10px;">
-                    <i class="fas fa-check-circle" style="color: var(--accent-green); margin-right: 10px;"></i>
-                    <strong>Quantitative Discrete:</strong> The values (e.g., 4, 8, 15) represent counts of units sold. They are integers.
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <i class="fas fa-check-circle" style="color: var(--accent-green); margin-right: 10px;"></i>
-                    <strong>Dimensions:</strong> The matrix is size $4 \times 3$ (4 Rows, 3 Columns).
-                </li>
-            </ul>
+            <section id="understanding">
+                <h2><i class="fas fa-database"></i> Part 1: Understanding the Data</h2>
+                <p>
+                    We are given a dataset represented as Matrix <span class="math">D</span>. Each row is a Region (1-4), and each column is a Product Category (A, B, C).
+                </p>
 
-            <h3>1.2 Descriptive Statistics Calculation</h3>
-            <p>Below is the rigorous step-by-step calculation for the Mean, Variance, and Standard Deviation for <strong>Product C (Column 3)</strong> as an example.</p>
-            
-            <div class="step-block">
-                <span class="step-title">Step 1: Calculate the Mean ($\bar{x}$)</span>
-                <p>Sum of elements divided by count ($n=4$).</p>
-                <p>$\bar{x} = \frac{12 + 15 + 9 + 9}{4} = \frac{45}{4} = \mathbf{11.25}$</p>
-            </div>
+                <div class="matrix-display">
+                    <span class="bracket">[</span>
+                    <div class="matrix-grid">
+                        <span class="matrix-val">4</span><span class="matrix-val">8</span><span class="matrix-val">12</span>
+                        <span class="matrix-val">6</span><span class="matrix-val">10</span><span class="matrix-val">15</span>
+                        <span class="matrix-val">5</span><span class="matrix-val">7</span><span class="matrix-val">9</span>
+                        <span class="matrix-val">3</span><span class="matrix-val">6</span><span class="matrix-val">9</span>
+                    </div>
+                    <span class="bracket">]</span>
+                </div>
 
-            <div class="step-block">
-                <span class="step-title">Step 2: Calculate Deviations Squared $(x - \bar{x})^2$</span>
-                <table class="calc-table">
+                <h3>Data Type Identification</h3>
+                <p>
+                    The elements (e.g., 4, 8, 15) represent sales quantities.
+                </p>
+                <ul>
+                    <li><strong>Type:</strong> Quantitative Discrete (Integers).</li>
+                    <li><strong>Structure:</strong> 4 Rows x 3 Columns (Dimensions: 4x3).</li>
+                </ul>
+            </section>
+
+            <section id="statistics" class="card">
+                <h3>Descriptive Statistics</h3>
+                <p>Calculated for each column (Product A, B, C). Formulas used:</p>
+                <ul>
+                    <li><strong>Mean (<span class="math">&mu;</span>):</strong> Sum / Count.</li>
+                    <li><strong>Median:</strong> Middle value of sorted data.</li>
+                    <li><strong>Std Dev (<span class="math">&sigma;</span>):</strong> Measure of dispersion.</li>
+                </ul>
+
+                <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Data Point ($x$)</th>
-                            <th>Mean ($\bar{x}$)</th>
-                            <th>Deviation ($x - \bar{x}$)</th>
-                            <th>Squared Deviation $(x - \bar{x})^2$</th>
+                            <th>Metric</th>
+                            <th>Product A (Col 1)</th>
+                            <th>Product B (Col 2)</th>
+                            <th>Product C (Col 3)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>12</td><td>11.25</td><td>0.75</td><td>0.5625</td></tr>
-                        <tr><td>15</td><td>11.25</td><td>3.75</td><td>14.0625</td></tr>
-                        <tr><td>9</td><td>11.25</td><td>-2.25</td><td>5.0625</td></tr>
-                        <tr><td>9</td><td>11.25</td><td>-2.25</td><td>5.0625</td></tr>
-                        <tr style="border-top: 2px solid var(--accent-cyan); color: var(--accent-cyan); font-weight: bold;">
-                            <td>Sum ($\Sigma$)</td>
-                            <td>-</td>
-                            <td>0</td>
-                            <td>24.75</td>
+                        <tr>
+                            <td><strong>Mean</strong></td>
+                            <td style="color: var(--accent-cyan);">4.50</td>
+                            <td style="color: var(--accent-cyan);">7.75</td>
+                            <td style="color: var(--accent-cyan);">11.25</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Median</strong></td>
+                            <td>4.50</td>
+                            <td>7.50</td>
+                            <td>10.50</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Std Dev</strong></td>
+                            <td>1.29</td>
+                            <td>1.71</td>
+                            <td>2.87</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </section>
 
-            <div class="step-block">
-                <span class="step-title">Step 3: Calculate Variance ($s^2$) & Std Dev ($s$)</span>
-                <p>We use Sample Variance formula ($n-1$) because this is a sample of regions, not the entire population.</p>
-                <p><strong>Variance:</strong> $s^2 = \frac{24.75}{4 - 1} = \frac{24.75}{3} = \mathbf{8.25}$</p>
-                <p><strong>Std Deviation:</strong> $s = \sqrt{8.25} \approx \mathbf{2.87}$</p>
-            </div>
+            <section id="variability" class="card">
+                <h3>Variability Analysis</h3>
+                <p>Determining the Range (Max - Min) and Variance for each product category.</p>
 
-            <h3>1.3 Full Summary Table</h3>
-            <table class="calc-table">
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th style="color: var(--primary-blue);">Product A</th>
-                        <th style="color: var(--primary-blue);">Product B</th>
-                        <th style="color: var(--primary-blue);">Product C</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Mean ($\mu$)</td><td>4.50</td><td>7.75</td><td>11.25</td></tr>
-                    <tr><td>Median</td><td>4.50</td><td>7.50</td><td>10.50</td></tr>
-                    <tr><td>Range (Max-Min)</td><td>3.00</td><td>4.00</td><td>6.00</td></tr>
-                    <tr><td>Variance ($s^2$)</td><td>1.67</td><td>2.92</td><td>8.25</td></tr>
-                    <tr><td>Std Dev ($s$)</td><td>1.29</td><td>1.71</td><td>2.87</td></tr>
-                    <tr><td>Coeff. of Variation</td><td>29%</td><td>22%</td><td>25%</td></tr>
-                </tbody>
-            </table>
-            
-            
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                            <th>Range</th>
+                            <th>Variance (<span class="math">s<sup>2</sup></span>)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Product A</strong></td>
+                            <td>3</td>
+                            <td>6</td>
+                            <td><span style="color: var(--accent-orange);">3</span></td>
+                            <td>1.67</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product B</strong></td>
+                            <td>6</td>
+                            <td>10</td>
+                            <td><span style="color: var(--accent-orange);">4</span></td>
+                            <td>2.92</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product C</strong></td>
+                            <td>9</td>
+                            <td>15</td>
+                            <td><span style="color: var(--accent-orange);">6</span></td>
+                            <td>8.25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-[Image of standard deviation on normal distribution curve]
-
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-calculator"></i> Part 2: Linear Algebra Operations</h2>
-            
-            <h3>2.1 Matrix Transpose ($D^T$)</h3>
-            <p>
-                Transposing a matrix flips it over its diagonal. Row 1 becomes Column 1. This is useful in Data Science to switch from a "Region-centric" view to a "Product-centric" view.
-            </p>
-            
-
-            <div class="matrix-wrapper">
-                <div>
-                    <div class="label">Original ($4 \times 3$)</div>
-                    <div class="matrix-box" style="font-size: 1rem;">
-                        <div class="row"><span class="val">4</span><span class="val">8</span><span class="val">12</span></div>
-                        <div class="row"><span class="val">6</span><span class="val">10</span><span class="val">15</span></div>
-                        <div class="row"><span class="val">5</span><span class="val">7</span><span class="val">9</span></div>
-                        <div class="row"><span class="val">3</span><span class="val">6</span><span class="val">9</span></div>
-                    </div>
-                </div>
-
-                <div class="operator"><i class="fas fa-arrow-right"></i></div>
-
-                <div>
-                    <div class="label">Transpose ($3 \times 4$)</div>
-                    <div class="matrix-box" style="font-size: 1rem;">
-                        <div class="row">
-                            <span class="val">4</span><span class="val">6</span><span class="val">5</span><span class="val">3</span>
-                        </div>
-                        <div class="row">
-                            <span class="val">8</span><span class="val">10</span><span class="val">7</span><span class="val">6</span>
-                        </div>
-                        <div class="row">
-                            <span class="val">12</span><span class="val">15</span><span class="val">9</span><span class="val">9</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3>2.2 Matrix Transformation (Revenue Calculation)</h3>
-            <p>
-                We multiply Matrix $D$ ($4 \times 3$) by the Price Vector $P$ ($3 \times 1$). The result is a Revenue Vector ($4 \times 1$).
-            </p>
-
-            <div class="matrix-wrapper">
-                <div class="matrix-box" style="font-size: 1rem;">
-                    <div class="row"><span class="val">4</span><span class="val">8</span><span class="val">12</span></div>
-                    <div class="row"><span class="val">6</span><span class="val">10</span><span class="val">15</span></div>
-                    <div class="row"><span class="val">5</span><span class="val">7</span><span class="val">9</span></div>
-                    <div class="row"><span class="val">3</span><span class="val">6</span><span class="val">9</span></div>
-                </div>
-
-                <span class="operator">&times;</span>
-
-                <div class="matrix-box" style="font-size: 1rem;">
-                    <div class="row"><span class="val" style="color: var(--accent-pink);">5</span></div>
-                    <div class="row"><span class="val" style="color: var(--accent-pink);">10</span></div>
-                    <div class="row"><span class="val" style="color: var(--accent-pink);">15</span></div>
-                </div>
-
-                <span class="operator">=</span>
-
-                <div class="matrix-box" style="font-size: 1rem;">
-                    <div class="row"><span class="val" style="color: var(--accent-green); width: 60px;">280</span></div>
-                    <div class="row"><span class="val" style="color: var(--accent-green); width: 60px;">355</span></div>
-                    <div class="row"><span class="val" style="color: var(--accent-green); width: 60px;">230</span></div>
-                    <div class="row"><span class="val" style="color: var(--accent-green); width: 60px;">210</span></div>
-                </div>
-            </div>
-
-            <h4>Detailed Dot Product Calculation (Row 2 Example)</h4>
-            <p>To find the revenue for Region 2 (355), we calculate the dot product of Row 2 and Vector P:</p>
-            <div class="step-block" style="border-left-color: var(--accent-pink);">
-                <p>
-                    $R_2 = (6 \times 5) + (10 \times 10) + (15 \times 15)$<br>
-                    $R_2 = (30) + (100) + (225)$<br>
-                    $R_2 = \mathbf{355}$
-                </p>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">
-                    Interpretation: (Prod A Qty $\times$ Price A) + (Prod B Qty $\times$ Price B) + (Prod C Qty $\times$ Price C)
-                </p>
-            </div>
-            
-            
-
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-code"></i> Part 3: Python Implementation (NumPy)</h2>
-            <p>
-                In Data Science, we don't calculate these by hand. We use the <strong>NumPy</strong> library. Here is the exact code to reproduce these results.
-            </p>
-
-            <div class="code-container">
-                <div class="code-header">
-                    <div class="dots">
-                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    </div>
-                    <span class="filename">analysis.py</span>
-                </div>
-                <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
-
-<span class="com"># 1. Define the Matrix and Vector</span>
-D = np.array([
-    [<span class="num">4</span>, <span class="num">8</span>, <span class="num">12</span>],
-    [<span class="num">6</span>, <span class="num">10</span>, <span class="num">15</span>],
-    [<span class="num">5</span>, <span class="num">7</span>, <span class="num">9</span>],
-    [<span class="num">3</span>, <span class="num">6</span>, <span class="num">9</span>]
-])
-P = np.array([<span class="num">5</span>, <span class="num">10</span>, <span class="num">15</span>])
-
-<span class="com"># 2. Descriptive Statistics (axis=0 means columns)</span>
-means = np.mean(D, axis=<span class="num">0</span>)
-std_devs = np.std(D, axis=<span class="num">0</span>, ddof=<span class="num">1</span>) <span class="com"># ddof=1 for Sample Std Dev</span>
-
-<span class="fn">print</span>(f<span class="str">"Means: {means}"</span>)      <span class="com"># Output: [4.5  7.75 11.25]</span>
-<span class="fn">print</span>(f<span class="str">"Std Devs: {std_devs}"</span>) <span class="com"># Output: [1.29 1.71 2.87]</span>
-
-<span class="com"># 3. Matrix Multiplication (Dot Product)</span>
-revenue = np.dot(D, P)
-
-<span class="fn">print</span>(f<span class="str">"Revenue Vector: {revenue}"</span>)
-<span class="com"># Output: [280 355 230 210]</span>
-
-<span class="com"># 4. Identify Max Revenue</span>
-max_revenue_index = np.argmax(revenue)
-<span class="fn">print</span>(f<span class="str">"Best Region: {max_revenue_index + 1}"</span>) <span class="com"># Output: 2</span></code></pre>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-lightbulb"></i> Part 4: Conceptual Analysis & Discussion</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <section id="transpose">
+                <h2><i class="fas fa-calculator"></i> Part 2: Linear Algebra</h2>
                 
-                <div>
-                    <h3>Interpretation of Variability</h3>
+                <h3>Matrix Transpose (<span class="math">D<sup>T</sup></span>)</h3>
+                <p>We swap rows and columns. The new matrix dimensions are 3x4.</p>
+
+                <div class="matrix-display">
+                    <span class="bracket">[</span>
+                    <div class="matrix-grid" style="grid-template-columns: repeat(4, 1fr);">
+                        <span class="matrix-val">4</span><span class="matrix-val">6</span><span class="matrix-val">5</span><span class="matrix-val">3</span>
+                        <span class="matrix-val">8</span><span class="matrix-val">10</span><span class="matrix-val">7</span><span class="matrix-val">6</span>
+                        <span class="matrix-val">12</span><span class="matrix-val">15</span><span class="matrix-val">9</span><span class="matrix-val">9</span>
+                    </div>
+                    <span class="bracket">]</span>
+                </div>
+            </section>
+
+            <section id="transformation" class="card">
+                <h3>Transforming Data: Matrix Multiplication</h3>
+                <p>
+                    We multiply Matrix <span class="math">D</span> by the Price Vector <span class="math">P</span> = [5, 10, 15] to calculate revenue per region.
+                </p>
+
+                <div class="insight-box">
+                    <span class="insight-title">Calculation Logic (Row 1 Example):</span>
                     <p>
-                        We calculated the <strong>Coefficient of Variation (CV)</strong> ($\frac{\sigma}{\mu}$) for each product. 
-                    </p>
-                    <ul style="list-style: none; padding-left: 10px; border-left: 2px solid var(--accent-violet);">
-                        <li><strong>Product A (CV = 0.29):</strong> High volatility relative to sales volume.</li>
-                        <li><strong>Product B (CV = 0.22):</strong> The most consistent performer.</li>
-                    </ul>
-                    <p style="font-size: 0.9rem; margin-top: 10px;">
-                        <em>Business Insight:</em> Product B is a reliable "cash cow," while Product A fluctuates more, posing higher inventory risk.
+                        Region 1 Revenue = (4 &times; 5) + (8 &times; 10) + (12 &times; 15)<br>
+                        = 20 + 80 + 180<br>
+                        = <strong>280</strong>
                     </p>
                 </div>
 
-                <div>
-                    <h3>Real-World Matrix Applications</h3>
-                    <p>
-                        Matrix multiplication is the engine of modern AI.
-                    </p>
-                    <ul style="list-style: none; padding-left: 10px; border-left: 2px solid var(--accent-cyan);">
-                        <li style="margin-bottom: 10px;"><strong>Neural Networks:</strong> Weights ($W$) and Inputs ($x$) are multiplied ($W \cdot x$) to calculate neuron activation.</li>
-                        <li><strong>Recommendation Systems:</strong> Multiplying a User Matrix by an Item Matrix predicts ratings for products users haven't seen yet (Collaborative Filtering).</li>
-                    </ul>
+                <div style="display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <div class="matrix-display" style="font-size: 0.9rem;">
+                        <span class="bracket">[</span>
+                        <div class="matrix-grid">
+                            <span>4</span><span>8</span><span>12</span>
+                            <span>6</span><span>10</span><span>15</span>
+                            <span>5</span><span>7</span><span>9</span>
+                            <span>3</span><span>6</span><span>9</span>
+                        </div>
+                        <span class="bracket">]</span>
+                    </div>
+                    
+                    <span style="font-size: 2rem;">&times;</span>
+
+                    <div class="matrix-display" style="font-size: 0.9rem;">
+                        <span class="bracket">[</span>
+                        <div class="matrix-grid" style="grid-template-columns: 1fr;">
+                            <span style="color: var(--accent-pink);">5</span>
+                            <span style="color: var(--accent-pink);">10</span>
+                            <span style="color: var(--accent-pink);">15</span>
+                        </div>
+                        <span class="bracket">]</span>
+                    </div>
+
+                    <span style="font-size: 2rem;">=</span>
+
+                    <div class="matrix-display">
+                        <span class="bracket">[</span>
+                        <div class="matrix-grid" style="grid-template-columns: 1fr;">
+                            <span style="color: var(--accent-green);">280</span>
+                            <span style="color: var(--accent-green);">355</span>
+                            <span style="color: var(--accent-green);">230</span>
+                            <span style="color: var(--accent-green);">210</span>
+                        </div>
+                        <span class="bracket">]</span>
+                    </div>
                 </div>
+            </section>
 
-            </div>
-        </section>
+            <section id="patterns" class="card">
+                <h3>Identifying Patterns</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div class="insight-box">
+                        <span class="insight-title">Highest Revenue Region</span>
+                        <p style="font-size: 1.5rem; color: var(--accent-green); margin: 10px 0;">Region 2</p>
+                        <p>Total Revenue: <strong>$355</strong></p>
+                    </div>
 
-        <footer>
-            <p>Matrix Analysis & Linear Algebra Project</p>
-            <p style="margin-top: 1rem; opacity: 0.7;">
-                Created by <strong style="color: var(--accent-cyan); letter-spacing: 1px;">Dahane Ahmed Lamine</strong>
-            </p>
-            <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 2rem;">&copy; 2026 Open Source Education.</p>
-        </footer>
+                    <div class="insight-box" style="border-left-color: var(--accent-violet);">
+                        <span class="insight-title" style="color: var(--accent-violet);">Total Revenue per Product</span>
+                        <ul>
+                            <li>Product A: 18 units &times; $5 = <strong>$90</strong></li>
+                            <li>Product B: 31 units &times; $10 = <strong>$310</strong></li>
+                            <li>Product C: 45 units &times; $15 = <strong>$675</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
+            <section id="concepts">
+                <h2><i class="fas fa-lightbulb"></i> Part 3: Conceptual Questions</h2>
+                
+                <div class="card">
+                    <h3>Interpretation & Application</h3>
+                    
+                    <h4>1. What does the mean tell us?</h4>
+                    <p>
+                        The mean acts as the "center of gravity." For Product C, the mean of 11.25 indicates that on average, we expect to sell about 11 units per region. This is crucial for inventory forecasting.
+                    </p>
+
+                    <h4>2. Coefficient of Variation (CV)</h4>
+                    <p>
+                        CV = Std Dev / Mean. Product B has the lowest CV (0.22), meaning it is the most stable and reliable product regarding sales consistency.
+                    </p>
+
+                    <h4>3. Real-World Matrix Applications</h4>
+                    <p>
+                        <strong>Recommendation Systems:</strong> Netflix multiplies a <em>User Matrix</em> by a <em>Movie Matrix</em> to predict ratings.
+                        <br>
+                        <strong>Computer Graphics:</strong> Images are matrices. Matrix multiplication is used to rotate, scale, or apply filters to images.
+                    </p>
+                </div>
+            </section>
+
+            <footer style="text-align: center; margin-top: 5rem; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
+                <p>&copy; 2026 Matrix Analysis Project.</p>
+                <p>Created by <strong style="color: var(--accent-cyan);">DAHANE AHMED LAMINE</strong></p>
+            </footer>
+
+        </main>
     </div>
 
+    <script>
+        // Simple ScrollSpy to highlight sidebar links
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
